@@ -1,3 +1,4 @@
+import os
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from API.routes import programme
@@ -19,4 +20,4 @@ app.include_router(programme.programmeRouter)
 
 if __name__ == "__main__":
     import uvicorn
-    uvicorn.run("main:app", reload=True, host='localhost', port=8000)
+    uvicorn.run("main:app", reload=True, host='0.0.0.0', port=int(os.environ.get('PORT', 8000)))
